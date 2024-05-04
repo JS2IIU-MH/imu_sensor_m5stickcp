@@ -22,6 +22,9 @@ void setup() {
 
   M5.begin(cfg);
 
+  // Serial1(Ext_IO): Rx(0), Tx(26)
+  Serial1.begin(BAUDRATE, SERIAL_8N1, 0, 26);
+
   // LCD Screen setting ## M5StickC Plus2
   M5.Display.setRotation(1);
   M5.Display.fillScreen(TFT_BLACK);
@@ -45,6 +48,7 @@ void loop() {
 
   // change format up to reveiver
   Serial.printf("%5.1f,%5.1f,%5.1f\n", roll, pitch, yaw);
+  Serial1.printf("%5.1f,%5.1f,%5.1f\n", roll, pitch, yaw);
 
   M5.Display.fillScreen(BLACK);
   M5.Display.setCursor(0, 20);
